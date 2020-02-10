@@ -37,12 +37,18 @@ public class ActivityRound extends AppCompatActivity {
             holeNumber++;
             Intent intent = new Intent(this, ActivityHole.class);
             intent.putExtra(HOLE_NUMBER, holeNumber);
+
             int holePar = 0;
-            if (!etHolePar.getText().toString().isEmpty())
-                holePar = Integer.parseInt(etHolePar.getText().toString());
             int holeStroke = 0;
-            if (!etHoleStroke.getText().toString().isEmpty())
-                Integer.parseInt(etHoleStroke.getText().toString());
+            if (!etHolePar.getText().toString().isEmpty()) {
+                holePar = Integer.parseInt(etHolePar.getText().toString());
+                intent.putExtra(HOLE_PAR, holePar);
+            }
+            if (!etHoleStroke.getText().toString().isEmpty()) {
+                holeStroke = Integer.parseInt(etHoleStroke.getText().toString());
+                System.out.println(holeStroke);
+                intent.putExtra(HOLE_STROKE, holeStroke);
+            }
 
             System.out.println("[HOLE NUMBER]: " + holeNumber);
             System.out.println("[HOLE PAR]: " + holePar);
@@ -55,6 +61,20 @@ public class ActivityRound extends AppCompatActivity {
     }
 
     public void endHole(View view) {
+        // write the round data to the database
+        // hole number = hole number
+        // hole par = hole par
+        // hole stroke = hole stroke
+        // hole score = number of shots
+        // if player gets shoots par and does not stroke then stableford = 2
+        // if player gets shoots bogey and does not stroke then stableford = 1
+        // if player gets shoots 2x bogey and does not stroke then stableford = 0
+        // if player gets shoots bogey and does stroke then stableford = 2
+        // if player gets shoots 2x bogey and does stroke then stableford = 1
+        // if player gets shoots 3x bogey and does stroke then stableford = 0
+        // if player gets shoots par and does stroke then stableford = 3
+        // if player gets shoots bogey and does stroke then stableford = 2
+        // if player gets shoots 2x bogey and does stroke then stableford = 1
         finish();
     }
 }

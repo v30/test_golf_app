@@ -1,10 +1,12 @@
-package za.co.nelowen;
+package za.co.nelowen.shot_activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import za.co.nelowen.R;
 
 public class ActivityShot extends AppCompatActivity {
 
