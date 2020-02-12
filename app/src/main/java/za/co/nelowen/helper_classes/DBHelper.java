@@ -1,8 +1,12 @@
 package za.co.nelowen.helper_classes;
 
 import android.content.Context;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -20,20 +24,31 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public void tableCreate(SQLiteDatabase db, String tableName) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("CREATE TABLE IF NOT EXISTS ");
-        builder.append(tableName + " ");
-        builder.append("(");
-        builder.append(tableName + "_hash VARCHAR(255) PRIMARY KEY, ");
-        builder.append(tableName + "_name VARCHAR(255), ");
-        builder.append(tableName + "_keywords VARCHAR, ");
-        builder.append(tableName + "_pebble BLOB UNIQUE, ");
-        builder.append(tableName + "_created TIMESTAMP, ");
-        builder.append(tableName + "_modified TIMESTAMP, ");
-        builder.append(tableName + "_deleted TIMESTAMP, ");
-        builder.append(tableName + "_synced TIMESTAMP");
-        builder.append(")");
-        db.execSQL(builder.toString());
+    public void settingsTableCreate(SQLiteDatabase db) {
+        StringBuilder query = new StringBuilder();
+
+        query.append("CREATE TABLE IF NOT EXISTS ");
+        query.append("settings ");
+        query.append("(");
+        query.append("setting_id INT NOT NULL AUTO_INCREMENT, ");
+        query.append("setting_name VARCHAR(255) NOT NULL, ");
+        query.append("setting_value VARCHAR(255) NOT NULL, ");
+        query.append("PRIMARY KEY(setting_id)");
+        query.append(")");
+
+        db.execSQL(query.toString());
     }
+
+    public int numberOfRows(String tableName)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return (int) DatabaseUtils.queryNumEntries(db, tableName);
+    }
+
+    // I need the following tables
+    //      * Settings
+    //      * User
+    //      * Round
+    //      * Hole
+    //      * Shot
 }
