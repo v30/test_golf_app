@@ -32,6 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String HOLE_STABLE = "stableford_score";
     private static final String HOLE_TRUE = "true_score";
 
+    private static final String SHOTS = "shots";
     private static final String SHOT_ID = "shot_id";
     private static final String SHOT_NUMBER = "shot_number";
     private static final String SHOT_TYPE = "shot_type";
@@ -57,10 +58,10 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("CREATE TABLE IF NOT EXISTS ");
         query.append("settings ");
         query.append("(");
-        query.append("setting_id INT NOT NULL AUTO_INCREMENT, ");
+        query.append("setting_id INTEGER PRIMARY KEY AUTOINCREMENT, ");
         query.append("setting_name VARCHAR(255) NOT NULL, ");
-        query.append("setting_value VARCHAR(255) NOT NULL, ");
-        query.append("PRIMARY KEY(setting_id)");
+        query.append("setting_value VARCHAR(255) NOT NULL");
+//        query.append("PRIMARY KEY(setting_id)");
         query.append(")");
 
         db.execSQL(query.toString());
@@ -72,10 +73,9 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("CREATE TABLE IF NOT EXISTS ");
         query.append("players ");
         query.append("(");
-        query.append("player_id INT NOT NULL AUTO_INCREMENT, ");
+        query.append("player_id INTEGER PRIMARY KEY AUTOINCREMENT, ");
         query.append("player_name VARCHAR(255) NOT NULL, ");
-        query.append("player_handicap INT NOT NULL, ");
-        query.append("PRIMARY KEY(player_id)");
+        query.append("player_handicap INT NOT NULL");
         query.append(")");
 
         db.execSQL(query.toString());
@@ -87,15 +87,14 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("CREATE TABLE IF NOT EXISTS ");
         query.append("rounds ");
         query.append("(");
-        query.append("round_id INT NOT NULL AUTO_INCREMENT, ");
+        query.append("round_id INTEGER PRIMARY KEY AUTOINCREMENT, ");
         query.append("course_name VARCHAR(255) NOT NULL, ");
         query.append("course_par INT NOT NULL, ");
         query.append("medal_score INT NOT NULL, ");
         query.append("stableford_score INT NOT NULL, ");
         query.append("fairways_hit INT NOT NULL, ");
         query.append("gir INT NOT NULL, ");
-        query.append("putts INT NOT NULL, ");
-        query.append("PRIMARY KEY(round_id)");
+        query.append("putts INT NOT NULL");
         query.append(")");
 
         db.execSQL(query.toString());
@@ -107,15 +106,14 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("CREATE TABLE IF NOT EXISTS ");
         query.append("holes ");
         query.append("(");
-        query.append("hole_id INT NOT NULL AUTO_INCREMENT, ");
+        query.append("hole_id INTEGER PRIMARY KEY AUTOINCREMENT, ");
         query.append("round_id INT NOT NULL, ");
         query.append("hole_number INT NOT NULL, ");
         query.append("hole_par INT NOT NULL, ");
         query.append("hole_stroke INT NOT NULL, ");
         query.append("medal_score INT NOT NULL, ");
         query.append("stableford_score INT NOT NULL, ");
-        query.append("true_score INT NOT NULL, ");
-        query.append("PRIMARY KEY(hole_id)");
+        query.append("true_score INT NOT NULL");
         query.append(")");
 
         db.execSQL(query.toString());
@@ -127,7 +125,7 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("CREATE TABLE IF NOT EXISTS ");
         query.append("shots ");
         query.append("(");
-        query.append("shot_id INT NOT NULL AUTO_INCREMENT, ");
+        query.append("shot_id INTEGER PRIMARY KEY AUTOINCREMENT, ");
         query.append("round_id INT NOT NULL, ");
         query.append("hole_id INT NOT NULL, ");
         query.append("shot_number INT NOT NULL, ");
@@ -135,8 +133,7 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("target_distance INT NOT NULL, ");
         query.append("club_hit VARCHAR(2) NOT NULL, ");
         query.append("ball_flight VARCHAR(2) NOT NULL, ");
-        query.append("outcome VARCHAR(20) NOT NULL, ");
-        query.append("PRIMARY KEY(shot_id, round_id, shot_id)");
+        query.append("outcome VARCHAR(20) NOT NULL");
         query.append(")");
 
         db.execSQL(query.toString());
@@ -190,6 +187,6 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(BALL_FLIGHT, ballFlight);
         values.put(OUTCOME, outcome);
 
-        return db.insert(HOLES, null, values);
+        return db.insert(SHOTS, null, values);
     }
 }

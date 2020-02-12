@@ -65,7 +65,8 @@ public class ActivityRound extends AppCompatActivity {
 
     public void endRound(View view) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        dbHelper.insertRound(db, "Irene", 72, 8, 6, 27, 9, 27);
+        long result = dbHelper.insertRound(db, "Irene", 72, 8, 6, 27, 9, 27);
+        System.out.println("[ROUND RESULT]: "+result);
         finish();
     }
 }

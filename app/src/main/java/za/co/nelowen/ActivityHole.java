@@ -50,7 +50,8 @@ public class ActivityHole extends AppCompatActivity {
         System.out.println("[TRUE SCORE]: "+ shotNumber);
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        dbHelper.insertHole(db, 1, holeNumber, holePar, holeStroke, medalScore, stablefordScore, shotNumber);
+        long result = dbHelper.insertHole(db, 1, holeNumber, holePar, holeStroke, medalScore, stablefordScore, shotNumber);
+        System.out.println("[HOLE RESULT]: "+result);
 
         finish();
     }
