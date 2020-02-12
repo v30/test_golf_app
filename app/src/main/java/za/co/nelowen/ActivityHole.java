@@ -44,6 +44,7 @@ public class ActivityHole extends AppCompatActivity {
         System.out.println("[HOLE STROKE]: "+ holeStroke);
         System.out.println("[SF SCORE]: "+ stablefordScore);
         System.out.println("[MED SCORE]: "+ medalScore);
+        System.out.println("[TRUE SCORE]: "+ shotNumber);
 
         finish();
     }
