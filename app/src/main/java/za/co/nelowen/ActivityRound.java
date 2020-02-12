@@ -1,6 +1,7 @@
 package za.co.nelowen;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -8,7 +9,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import za.co.nelowen.helper_classes.DBHelper;
+
 public class ActivityRound extends AppCompatActivity {
+    private DBHelper dbHelper = new DBHelper(this);
     public static final String HOLE_NUMBER = "hole_number";
     public static final String HOLE_PAR = "hole_par";
     public static final String HOLE_STROKE = "hole_stroke";
@@ -59,21 +63,9 @@ public class ActivityRound extends AppCompatActivity {
             Toast.makeText(this, "YOU HAVE PLAYED 18 HOLES", Toast.LENGTH_SHORT).show();
     }
 
-    public void endHole(View view) {
-        // write the round data to the database
-        // hole number = hole number
-        // hole par = hole par
-        // hole stroke = hole stroke
-        // hole score = number of shots
-        // if player gets shoots par and does not stroke then stableford = 2
-        // if player gets shoots bogey and does not stroke then stableford = 1
-        // if player gets shoots 2x bogey and does not stroke then stableford = 0
-        // if player gets shoots bogey and does stroke then stableford = 2
-        // if player gets shoots 2x bogey and does stroke then stableford = 1
-        // if player gets shoots 3x bogey and does stroke then stableford = 0
-        // if player gets shoots par and does stroke then stableford = 3
-        // if player gets shoots bogey and does stroke then stableford = 2
-        // if player gets shoots 2x bogey and does stroke then stableford = 1
+    public void endRound(View view) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        dbHelper.insertRound(db, "Irene", 72, 8, 6, 27, 9, 27);
         finish();
     }
 }

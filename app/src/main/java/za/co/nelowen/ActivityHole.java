@@ -3,12 +3,15 @@ package za.co.nelowen;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 
+import za.co.nelowen.helper_classes.DBHelper;
 import za.co.nelowen.shot_activities.ActivityShot;
 
 public class ActivityHole extends AppCompatActivity {
+    private DBHelper dbHelper = new DBHelper(this);
     private int shotNumber = 0;
     public static final int PLAYER_HANDICAP = 7;
 
@@ -45,6 +48,9 @@ public class ActivityHole extends AppCompatActivity {
         System.out.println("[SF SCORE]: "+ stablefordScore);
         System.out.println("[MED SCORE]: "+ medalScore);
         System.out.println("[TRUE SCORE]: "+ shotNumber);
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        dbHelper.insertHole(db, 1, holeNumber, holePar, holeStroke, medalScore, stablefordScore, shotNumber);
 
         finish();
     }
