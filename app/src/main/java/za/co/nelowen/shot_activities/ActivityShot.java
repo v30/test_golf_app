@@ -1,33 +1,200 @@
 package za.co.nelowen.shot_activities;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
 import za.co.nelowen.R;
-import za.co.nelowen.helper_classes.DBHelper;
 
-public class ActivityShot extends AppCompatActivity {
-    private DBHelper dbHelper = new DBHelper(this);
+import static za.co.nelowen.helper_classes.JavaConstants.CLUB_HIT;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_ID;
+import static za.co.nelowen.helper_classes.JavaConstants.ROUND_ID;
+import static za.co.nelowen.helper_classes.JavaConstants.SHOT_NUMBER;
+import static za.co.nelowen.helper_classes.JavaConstants.SHOT_TYPE;
+import static za.co.nelowen.helper_classes.JavaConstants.TARGET_DISTANCE;
+
+public class ActivityShot extends AppCompatActivity implements View.OnClickListener{
+    private String roundId;
+    private String holeId;
+    private String shotType;
+    private String clubHit;
+    private int shotNumber;
+    private Button btnClubDriver, btnClub3W, btnClub5W, btnClub3H, btnClub4H, btnClub5H, btnClub2I, btnClub3I, btnClub4I, btnClub5I, btnClub6I, btnClub7I, btnClub8I, btnClub9I, btnClubPW, btnClubSW, btnClubGW, btnClubLW;
+    private Button btnShotTypeDrive, btnShotTypeApproach, btnShotTypeLayup, btnShotTypePitch, btnShotTypeChip, btnShotTypePutt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shot);
-        getIntentVariable();
+        getIntentValues();
+        initButtons();
     }
 
-    private void getIntentVariable() {
-
+    private void initButtons() {
+        btnClubDriver = findViewById(R.id.btnClubDriver);
+        btnClub3W = findViewById(R.id.btnClub3W);
+        btnClub5W = findViewById(R.id.btnClub5W);
+        btnClub3H = findViewById(R.id.btnClub3H);
+        btnClub4H = findViewById(R.id.btnClub4H);
+        btnClub5H = findViewById(R.id.btnClub5H);
+        btnClub2I = findViewById(R.id.btnClub2I);
+        btnClub3I = findViewById(R.id.btnClub3I);
+        btnClub4I = findViewById(R.id.btnClub4I);
+        btnClub5I = findViewById(R.id.btnClub5I);
+        btnClub6I = findViewById(R.id.btnClub6I);
+        btnClub7I = findViewById(R.id.btnClub7I);
+        btnClub8I = findViewById(R.id.btnClub8I);
+        btnClub9I = findViewById(R.id.btnClub9I);
+        btnClubPW = findViewById(R.id.btnClubPW);
+        btnClubSW = findViewById(R.id.btnClubSW);
+        btnClubGW = findViewById(R.id.btnClubGW);
+        btnClubLW = findViewById(R.id.btnClubLW);
+        btnShotTypeDrive = findViewById(R.id.btnShotTypeDrive);
+        btnShotTypeApproach = findViewById(R.id.btnShotTypeApproach);
+        btnShotTypeLayup = findViewById(R.id.btnShotTypeLayup);
+        btnShotTypePitch = findViewById(R.id.btnShotTypePitch);
+        btnShotTypeChip = findViewById(R.id.btnShotTypeChip);
+        btnShotTypePutt = findViewById(R.id.btnShotTypePutt);
+        btnClubDriver.setOnClickListener(this);
+        btnClub3W.setOnClickListener(this);
+        btnClub5W.setOnClickListener(this);
+        btnClub3H.setOnClickListener(this);
+        btnClub4H.setOnClickListener(this);
+        btnClub5H.setOnClickListener(this);
+        btnClub2I.setOnClickListener(this);
+        btnClub3I.setOnClickListener(this);
+        btnClub4I.setOnClickListener(this);
+        btnClub5I.setOnClickListener(this);
+        btnClub6I.setOnClickListener(this);
+        btnClub7I.setOnClickListener(this);
+        btnClub8I.setOnClickListener(this);
+        btnClub9I.setOnClickListener(this);
+        btnClubPW.setOnClickListener(this);
+        btnClubSW.setOnClickListener(this);
+        btnClubGW.setOnClickListener(this);
+        btnClubLW.setOnClickListener(this);
+        btnShotTypeDrive.setOnClickListener(this);
+        btnShotTypeApproach.setOnClickListener(this);
+        btnShotTypeLayup.setOnClickListener(this);
+        btnShotTypePitch.setOnClickListener(this);
+        btnShotTypeChip.setOnClickListener(this);
+        btnShotTypePutt.setOnClickListener(this);
     }
 
-    public void endShot(View view) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        long result = dbHelper.insertShot(db, 1, 1, 1, "Drive", 278, "Driver", "HD", "Fairway");
-        System.out.println("[SHOT RESULT]: "+result);
+    private void getIntentValues() {
+        Intent holeIntent = getIntent();
+        roundId = holeIntent.getStringExtra(ROUND_ID);
+        holeId = holeIntent.getStringExtra(HOLE_ID);
+        shotNumber = holeIntent.getIntExtra(SHOT_NUMBER, 0);
+    }
+
+    public void getOutcome() {
+        EditText etTargetDistance = findViewById(R.id.etDistanceToPin);
+        int targetDistance = Integer.parseInt(etTargetDistance.getText().toString());
+        Intent intent = new Intent(this, ActivityShotOutcome.class);
+        intent.putExtra(ROUND_ID, roundId);
+        intent.putExtra(HOLE_ID, holeId);
+        intent.putExtra(SHOT_NUMBER, shotNumber);
+        intent.putExtra(SHOT_TYPE, shotType);
+        intent.putExtra(CLUB_HIT, clubHit);
+        intent.putExtra(TARGET_DISTANCE, targetDistance);
+        startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnClubDriver:
+                 clubHit = btnClubDriver.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub3W:
+                clubHit = btnClub3W.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub5W:
+                clubHit = btnClub5W.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub3H:
+                clubHit = btnClub3H.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub4H:
+                clubHit = btnClub4H.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub5H:
+                clubHit = btnClub5H.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub2I:
+                clubHit = btnClub2I.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub3I:
+                clubHit = btnClub3I.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub4I:
+                clubHit = btnClub4I.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub5I:
+                clubHit = btnClub5I.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub6I:
+                clubHit = btnClub6I.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub7I:
+                clubHit = btnClub7I.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub8I:
+                clubHit = btnClub8I.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClub9I:
+                clubHit = btnClub9I.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClubPW:
+                clubHit = btnClubPW.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClubSW:
+                clubHit = btnClubSW.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnClubGW:
+                clubHit = btnClubGW.getText().toString();
+                getOutcome();
+                break;
+            case R.id.btnShotTypeDrive:
+                shotType = btnShotTypeDrive.getText().toString();
+                break;
+            case R.id.btnShotTypeApproach:
+                shotType = btnShotTypeApproach.getText().toString();
+                break;
+            case R.id.btnShotTypeLayup:
+                shotType = btnShotTypeLayup.getText().toString();
+                break;
+            case R.id.btnShotTypePitch:
+                shotType = btnShotTypePitch.getText().toString();
+                break;
+            case R.id.btnShotTypeChip:
+                shotType = btnShotTypeChip.getText().toString();
+                break;
+            case R.id.btnShotTypePutt:
+                shotType = btnShotTypePutt.getText().toString();
+                break;
+        }
     }
 }

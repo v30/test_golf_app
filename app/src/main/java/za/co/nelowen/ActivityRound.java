@@ -10,9 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.UUID;
-
 import za.co.nelowen.helper_classes.DBHelper;
+import za.co.nelowen.helper_classes.Util;
 
 import static za.co.nelowen.helper_classes.JavaConstants.HOLE_NUMBER;
 import static za.co.nelowen.helper_classes.JavaConstants.HOLE_PAR;
@@ -24,6 +23,7 @@ public class ActivityRound extends AppCompatActivity {
 
     private int holeNumber = 0;
     private EditText etHolePar, etHoleStroke;
+    private String roundId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +39,14 @@ public class ActivityRound extends AppCompatActivity {
         etHolePar.requestFocus();
         etHolePar.setText("");
         etHoleStroke.setText("");
+        roundId = Util.generateGuid();
     }
 
     public void startHole(View view) {
         if (holeNumber < 18) {
             holeNumber++;
             Intent intent = new Intent(this, ActivityHole.class);
-            intent.putExtra(ROUND_ID, generateRoundId());
+            intent.putExtra(ROUND_ID, roundId);
             intent.putExtra(HOLE_NUMBER, holeNumber);
 
             int holePar;
@@ -65,15 +66,13 @@ public class ActivityRound extends AppCompatActivity {
             Toast.makeText(this, "YOU HAVE PLAYED 18 HOLES", Toast.LENGTH_SHORT).show();
     }
 
-    private String generateRoundId() {
-        return UUID.randomUUID().toString();
-    }
-
     public void endRound(View view) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        long result = dbHelper.insertRound(db, "Irene", 72, 8, 6, 27, 9, 27);
-        if (result == 1)
-            Log.v(this.getClass().toString(), "ADDED ROUND TO THE DATABASE!");
+        long result = dbHelper.insertRound(db, roundId, "Irene", 72, 8, 6, 27, 9, 27);
+
+        String message = (result == 1) ? "ADDED ROUND TO THE DATABASE!" : "SOMETHING WENT WRONG WRITING TO THE DATABASE!";
+        Log.v(this.getClass().toString(), message);
+
         finish();
     }
 }

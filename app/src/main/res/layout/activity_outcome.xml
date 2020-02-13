@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".shot_activities.ActivityShot">
+    tools:context=".shot_activities.ActivityShotOutcome">
 
     <TextView
-        android:id="@+id/txtShotType"
+        android:id="@+id/txtBallFlight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Shot Type"
+        android:text="Ball Flight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.046"
@@ -19,10 +19,10 @@
         app:layout_constraintVertical_bias="0.022" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShotTypeDrive"
+        android:id="@+id/btnHD"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="Drive"
+        android:text="H DRAW"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
@@ -31,10 +31,10 @@
         app:layout_constraintVertical_bias="0.076" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShotTypeApproach"
+        android:id="@+id/btnH"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="Approach"
+        android:text="HIGH"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -43,10 +43,10 @@
         app:layout_constraintVertical_bias="0.076" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShotTypeLayup"
+        android:id="@+id/btnHF"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="Layup"
+        android:text="H FADE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
@@ -55,10 +55,10 @@
         app:layout_constraintVertical_bias="0.076" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShotTypePitch"
+        android:id="@+id/btnD"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="Pitch"
+        android:text="DRAW"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
@@ -67,10 +67,10 @@
         app:layout_constraintVertical_bias="0.16" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShotTypeChip"
+        android:id="@+id/btnS"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="Chip"
+        android:text="STRAIGHT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -79,10 +79,10 @@
         app:layout_constraintVertical_bias="0.159" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnShotTypePutt"
+        android:id="@+id/btnF"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="Putt"
+        android:text="FADE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
@@ -90,34 +90,47 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.159" />
 
-    <TextView
-        android:id="@+id/txtDistanceToPin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Disctance to Pin"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLD"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="L DRAW"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.255" />
+        app:layout_constraintVertical_bias="0.244" />
 
-    <EditText
-        android:id="@+id/etDistanceToPin"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnL"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="LOW"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.304" />
+        app:layout_constraintVertical_bias="0.244" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnLF"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="L FADE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.244" />
 
     <TextView
-        android:id="@+id/txtClub"
+        android:id="@+id/txtOutcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Disctance to Pin"
+        android:text="Shot Outcome"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.052"
@@ -126,10 +139,10 @@
         app:layout_constraintVertical_bias="0.389" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClubDriver"
+        android:id="@+id/btnOutcomeFairway"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="Driver"
+        android:text="Fairway"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
@@ -138,10 +151,10 @@
         app:layout_constraintVertical_bias="0.445" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub3W"
+        android:id="@+id/btnOutcomeGreen"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="3 Wood"
+        android:text="Green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -150,10 +163,10 @@
         app:layout_constraintVertical_bias="0.445" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub5W"
+        android:id="@+id/btnbtnOutcomeBunker"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="5 Wood"
+        android:text="Bunker"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
@@ -162,10 +175,10 @@
         app:layout_constraintVertical_bias="0.445" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub3H"
+        android:id="@+id/btnbtnOutcomeHazard"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="3 Hybrid"
+        android:text="Hazard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
@@ -174,10 +187,10 @@
         app:layout_constraintVertical_bias="0.526" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub4H"
+        android:id="@+id/btnbtnOutcomeFringe"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="4 Hybrid"
+        android:text="Fringe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -186,10 +199,10 @@
         app:layout_constraintVertical_bias="0.526" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub5H"
+        android:id="@+id/btnOutcomeRough"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="5 Hybrid"
+        android:text="Rough"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
@@ -198,10 +211,10 @@
         app:layout_constraintVertical_bias="0.526" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub2I"
+        android:id="@+id/btnOutcomeHole"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="2 Iron"
+        android:text="Hole"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
@@ -210,10 +223,10 @@
         app:layout_constraintVertical_bias="0.604" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub3I"
+        android:id="@+id/btnOutcomeDuff"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:text="3 Iron"
+        android:text="Duff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -221,124 +234,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.604" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub4I"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="4 Iron"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub5I"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="5 Iron"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub6I"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="6 Iron"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub7I"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="7 Iron"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub8I"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="8 Iron"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.764" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClub9I"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="9 Iron"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.764" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClubSW"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="S Wedge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClubGW"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="G Wedge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClubLW"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="L Wedge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClubPW"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:text="P Wedge"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.764" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

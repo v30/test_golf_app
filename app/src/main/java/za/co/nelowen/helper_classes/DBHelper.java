@@ -6,39 +6,35 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import static za.co.nelowen.helper_classes.JavaConstants.BALL_FLIGHT;
+import static za.co.nelowen.helper_classes.JavaConstants.CLUB_HIT;
+import static za.co.nelowen.helper_classes.JavaConstants.COURSE_NAME;
+import static za.co.nelowen.helper_classes.JavaConstants.COURSE_PAR;
+import static za.co.nelowen.helper_classes.JavaConstants.DB_NAME;
+import static za.co.nelowen.helper_classes.JavaConstants.FAIRWAYS;
+import static za.co.nelowen.helper_classes.JavaConstants.GIR;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLES;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_ID;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_MEDAL;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_NUMBER;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_PAR;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_STABLE;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_STROKE;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_TRUE;
+import static za.co.nelowen.helper_classes.JavaConstants.MEDAL_SCORE;
+import static za.co.nelowen.helper_classes.JavaConstants.OUTCOME;
+import static za.co.nelowen.helper_classes.JavaConstants.PUTTS;
+import static za.co.nelowen.helper_classes.JavaConstants.ROUNDS;
+import static za.co.nelowen.helper_classes.JavaConstants.ROUND_ID;
+import static za.co.nelowen.helper_classes.JavaConstants.SHOTS;
+import static za.co.nelowen.helper_classes.JavaConstants.SHOT_ID;
+import static za.co.nelowen.helper_classes.JavaConstants.SHOT_NUMBER;
+import static za.co.nelowen.helper_classes.JavaConstants.SHOT_TYPE;
+import static za.co.nelowen.helper_classes.JavaConstants.STABLEFORD;
+import static za.co.nelowen.helper_classes.JavaConstants.TARGET_DISTANCE;
+import static za.co.nelowen.helper_classes.JavaConstants.VERSION;
+
 public class DBHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "golf_stat_tracker";
-    private static final int VERSION = 1;
-
-    private static final String ROUNDS = "rounds";
-    private static final String ROUND_ID = "round_id";
-    private static final String COURSE_NAME = "course_name";
-    private static final String COURSE_PAR = "course_par";
-    private static final String MEDAL_SCORE = "medal_score";
-    private static final String STABLEFORD = "stableford_score";
-    private static final String FAIRWAYS = "fairways_hit";
-    private static final String GIR = "gir";
-    private static final String PUTTS = "putts";
-
-    private static final String HOLES = "holes";
-    private static final String HOLE_ID = "hole_id";
-    private static final String HOLE_NUMBER = "hole_number";
-    private static final String HOLE_PAR = "hole_par";
-    private static final String HOLE_STROKE = "hole_stroke";
-    private static final String HOLE_MEDAL = "medal_score";
-    private static final String HOLE_STABLE = "stableford_score";
-    private static final String HOLE_TRUE = "true_score";
-
-    private static final String SHOTS = "shots";
-    private static final String SHOT_ID = "shot_id";
-    private static final String SHOT_NUMBER = "shot_number";
-    private static final String SHOT_TYPE = "shot_type";
-    private static final String TARGET_DISTANCE = "target_distance";
-    private static final String CLUB_HIT = "club_hit";
-    private static final String BALL_FLIGHT = "ball_flight";
-    private static final String OUTCOME = "outcome";
-
-
     public DBHelper(Context context) {
         super(context, DB_NAME, null, VERSION);
     }
@@ -58,7 +54,6 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("setting_id INTEGER PRIMARY KEY AUTOINCREMENT, ");
         query.append("setting_name VARCHAR(255) NOT NULL, ");
         query.append("setting_value VARCHAR(255) NOT NULL");
-//        query.append("PRIMARY KEY(setting_id)");
         query.append(")");
 
         db.execSQL(query.toString());
@@ -84,7 +79,7 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("CREATE TABLE IF NOT EXISTS ");
         query.append("rounds ");
         query.append("(");
-        query.append("round_id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+        query.append("round_id VARCHAR(255) PRIMARY KEY, ");
         query.append("course_name VARCHAR(255) NOT NULL, ");
         query.append("course_par INT NOT NULL, ");
         query.append("medal_score INT NOT NULL, ");
@@ -147,8 +142,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return (int) DatabaseUtils.queryNumEntries(db, tableName);
     }
 
-    public long insertRound(SQLiteDatabase db, String courseName, int coursePar, int fairways, int gir, int putts, int medal, int stableford) {
+    public long insertRound(SQLiteDatabase db, String roundId, String courseName, int coursePar, int fairways, int gir, int putts, int medal, int stableford) {
         ContentValues values = new ContentValues();
+        values.put(ROUND_ID, roundId);
         values.put(COURSE_NAME, courseName);
         values.put(COURSE_PAR, coursePar);
         values.put(FAIRWAYS, fairways);
@@ -160,8 +156,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.insert(ROUNDS, null, values);
     }
 
-    public long insertHole(SQLiteDatabase db, int roundId, int holeNumber, int holePar, int holeStroke, int holeMedal, int holeStable, int holeTrue) {
+    public long insertHole(SQLiteDatabase db, String holeId, String roundId, int holeNumber, int holePar, int holeStroke, int holeMedal, int holeStable, int holeTrue) {
         ContentValues values = new ContentValues();
+        values.put(HOLE_ID, holeId);
         values.put(ROUND_ID, roundId);
         values.put(HOLE_NUMBER, holeNumber);
         values.put(HOLE_PAR, holePar);
@@ -173,8 +170,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.insert(HOLES, null, values);
     }
 
-    public long insertShot(SQLiteDatabase db, int roundId, int holeId, int shotNumber, String shotType, int targetDistance, String clubHit, String ballFlight, String outcome) {
+    public long insertShot(SQLiteDatabase db, String shotId, String roundId, String holeId, int shotNumber, String shotType, int targetDistance, String clubHit, String ballFlight, String outcome) {
         ContentValues values = new ContentValues();
+        values.put(SHOT_ID, shotId);
         values.put(ROUND_ID, roundId);
         values.put(HOLE_ID, holeId);
         values.put(SHOT_NUMBER, shotNumber);
