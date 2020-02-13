@@ -3,19 +3,25 @@ package za.co.nelowen;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.UUID;
+
 import za.co.nelowen.helper_classes.DBHelper;
+
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_NUMBER;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_PAR;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_STROKE;
+import static za.co.nelowen.helper_classes.JavaConstants.ROUND_ID;
 
 public class ActivityRound extends AppCompatActivity {
     private DBHelper dbHelper = new DBHelper(this);
-    public static final String HOLE_NUMBER = "hole_number";
-    public static final String HOLE_PAR = "hole_par";
-    public static final String HOLE_STROKE = "hole_stroke";
+
     private int holeNumber = 0;
     private EditText etHolePar, etHoleStroke;
 
@@ -39,23 +45,19 @@ public class ActivityRound extends AppCompatActivity {
         if (holeNumber < 18) {
             holeNumber++;
             Intent intent = new Intent(this, ActivityHole.class);
+            intent.putExtra(ROUND_ID, generateRoundId());
             intent.putExtra(HOLE_NUMBER, holeNumber);
 
-            int holePar = 0;
-            int holeStroke = 0;
+            int holePar;
+            int holeStroke;
             if (!etHolePar.getText().toString().isEmpty()) {
                 holePar = Integer.parseInt(etHolePar.getText().toString());
                 intent.putExtra(HOLE_PAR, holePar);
             }
             if (!etHoleStroke.getText().toString().isEmpty()) {
                 holeStroke = Integer.parseInt(etHoleStroke.getText().toString());
-                System.out.println(holeStroke);
                 intent.putExtra(HOLE_STROKE, holeStroke);
             }
-
-            System.out.println("[HOLE NUMBER]: " + holeNumber);
-            System.out.println("[HOLE PAR]: " + holePar);
-            System.out.println("[HOLE STROKE]: " + holeStroke);
 
             startActivity(intent);
         }
@@ -63,10 +65,15 @@ public class ActivityRound extends AppCompatActivity {
             Toast.makeText(this, "YOU HAVE PLAYED 18 HOLES", Toast.LENGTH_SHORT).show();
     }
 
+    private String generateRoundId() {
+        return UUID.randomUUID().toString();
+    }
+
     public void endRound(View view) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         long result = dbHelper.insertRound(db, "Irene", 72, 8, 6, 27, 9, 27);
-        System.out.println("[ROUND RESULT]: "+result);
+        if (result == 1)
+            Log.v(this.getClass().toString(), "ADDED ROUND TO THE DATABASE!");
         finish();
     }
 }

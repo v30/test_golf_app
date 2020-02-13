@@ -10,10 +10,14 @@ import android.view.View;
 import za.co.nelowen.helper_classes.DBHelper;
 import za.co.nelowen.shot_activities.ActivityShot;
 
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_NUMBER;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_PAR;
+import static za.co.nelowen.helper_classes.JavaConstants.HOLE_STROKE;
+import static za.co.nelowen.helper_classes.JavaConstants.PLAYER_HANDICAP;
+
 public class ActivityHole extends AppCompatActivity {
     private DBHelper dbHelper = new DBHelper(this);
     private int shotNumber = 0;
-    public static final int PLAYER_HANDICAP = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,21 +27,18 @@ public class ActivityHole extends AppCompatActivity {
 
     public void startShot(View view) {
         Intent roundIntent = getIntent();
-        int holeNumber = roundIntent.getIntExtra(ActivityRound.HOLE_NUMBER, 0);
-        System.out.println("[HOLE NUMBER]: "+ holeNumber);
+        int holeNumber = roundIntent.getIntExtra(HOLE_NUMBER, 0);
         shotNumber++;
         Intent intent = new Intent(this, ActivityShot.class);
-        intent.putExtra("hole_number", shotNumber);
         startActivity(intent);
-        System.out.println("[SHOT NUMBER]: "+ shotNumber);
     }
 
     public void endHole(View view) {
         // write the hole data to the database
         Intent roundIntent = getIntent();
-        int holeNumber = roundIntent.getIntExtra(ActivityRound.HOLE_NUMBER, 0);
-        int holePar = roundIntent.getIntExtra(ActivityRound.HOLE_PAR, 0);
-        int holeStroke = roundIntent.getIntExtra(ActivityRound.HOLE_STROKE, 0);
+        int holeNumber = roundIntent.getIntExtra(HOLE_NUMBER, 0);
+        int holePar = roundIntent.getIntExtra(HOLE_PAR, 0);
+        int holeStroke = roundIntent.getIntExtra(HOLE_STROKE, 0);
         int stablefordScore = calculateStableford(holePar, holeStroke);
         int medalScore = calculateMedalScore(holePar, holeStroke);
 

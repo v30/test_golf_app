@@ -17,10 +17,14 @@ public class ActivityShot extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shot);
+        getIntentVariable();
+    }
+
+    private void getIntentVariable() {
+
     }
 
     public void endShot(View view) {
-        Log.v(this.getClass().toString(), "Ending shot!");
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         long result = dbHelper.insertShot(db, 1, 1, 1, "Drive", 278, "Driver", "HD", "Fairway");
         System.out.println("[SHOT RESULT]: "+result);

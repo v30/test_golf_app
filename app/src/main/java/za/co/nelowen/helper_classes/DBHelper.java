@@ -6,9 +6,6 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 public class DBHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "golf_stat_tracker";
     private static final int VERSION = 1;
