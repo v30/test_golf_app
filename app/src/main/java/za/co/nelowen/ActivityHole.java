@@ -40,6 +40,7 @@ public class ActivityHole extends AppCompatActivity {
         Intent roundIntent = getIntent();
         holeNumber = roundIntent.getIntExtra(HOLE_NUMBER, 0);
         roundId = roundIntent.getStringExtra(ROUND_ID);
+        System.out.println("[ActivityHole -> ROUND ID]: "+roundId);
         holeNumber = roundIntent.getIntExtra(HOLE_NUMBER, 0);
         holePar = roundIntent.getIntExtra(HOLE_PAR, 0);
         holeStroke = roundIntent.getIntExtra(HOLE_STROKE, 0);
@@ -49,6 +50,7 @@ public class ActivityHole extends AppCompatActivity {
         shotNumber++;
         holeId = Util.generateGuid();
         Intent intent = new Intent(this, ActivityShot.class);
+        System.out.println("[ROUND ID -> ActivityShot]: "+roundId);
         intent.putExtra(ROUND_ID, roundId);
         intent.putExtra(HOLE_ID, holeId);
         intent.putExtra(SHOT_NUMBER, shotNumber);

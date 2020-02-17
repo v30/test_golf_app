@@ -44,6 +44,7 @@ public class ActivityShotOutcome extends AppCompatActivity implements View.OnCli
     private void getIntentValues() {
         Intent holeIntent = getIntent();
         roundId = holeIntent.getStringExtra(ROUND_ID);
+        System.out.println("[ActivityShotOutcome -> ROUND ID]: "+roundId);
         holeId = holeIntent.getStringExtra(HOLE_ID);
         shotNumber = holeIntent.getIntExtra(SHOT_NUMBER, 0);
         shotType = holeIntent.getStringExtra(SHOT_TYPE);
@@ -156,6 +157,7 @@ public class ActivityShotOutcome extends AppCompatActivity implements View.OnCli
     public void endShot() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         String shotId = Util.generateGuid();
+        System.out.println("[ROUND ID]: "+roundId);
         long result = dbHelper.insertShot(db, shotId, roundId, holeId, shotNumber, shotType, targetDistance, clubHit, ballFlight, outcome);
 
         String message = (result == 1) ? "ADDED ROUND TO THE DATABASE!" : "SOMETHING WENT WRONG WRITING TO THE DATABASE!";

@@ -99,7 +99,7 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("holes ");
         query.append("(");
         query.append("hole_id VARCHAR(255) PRIMARY KEY, ");
-        query.append("round_id INT NOT NULL, ");
+        query.append("round_id VARCHAR(255) NOT NULL, ");
         query.append("hole_number INT NOT NULL, ");
         query.append("hole_par INT NOT NULL, ");
         query.append("hole_stroke INT NOT NULL, ");
@@ -118,8 +118,8 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("shots ");
         query.append("(");
         query.append("shot_id VARCHAR(255) PRIMARY KEY, ");
-        query.append("round_id INT NOT NULL, ");
-        query.append("hole_id INT NOT NULL, ");
+        query.append("round_id VARCHAR(255) NOT NULL, ");
+        query.append("hole_id VARCHAR(255) NOT NULL, ");
         query.append("shot_number INT NOT NULL, ");
         query.append("shot_type VARCHAR(35) NOT NULL, ");
         query.append("target_distance INT NOT NULL, ");
@@ -183,5 +183,12 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(OUTCOME, outcome);
 
         return db.insert(SHOTS, null, values);
+    }
+
+    public void dropTables(SQLiteDatabase db, String[] tableNames) {
+        for (String tableName : tableNames) {
+            String deleteString = "DROP TABLE IF EXISTS " + tableName;
+            db.execSQL(deleteString);
+        }
     }
 }

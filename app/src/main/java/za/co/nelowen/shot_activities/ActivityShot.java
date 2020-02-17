@@ -88,6 +88,7 @@ public class ActivityShot extends AppCompatActivity implements View.OnClickListe
     private void getIntentValues() {
         Intent holeIntent = getIntent();
         roundId = holeIntent.getStringExtra(ROUND_ID);
+        System.out.println("[ActivityShot -> ROUND ID]: "+roundId);
         holeId = holeIntent.getStringExtra(HOLE_ID);
         shotNumber = holeIntent.getIntExtra(SHOT_NUMBER, 0);
     }
@@ -96,6 +97,7 @@ public class ActivityShot extends AppCompatActivity implements View.OnClickListe
         EditText etTargetDistance = findViewById(R.id.etDistanceToPin);
         int targetDistance = Integer.parseInt(etTargetDistance.getText().toString());
         Intent intent = new Intent(this, ActivityShotOutcome.class);
+        System.out.println("[ROUND ID -> ActivityShotOutcome]: "+roundId);
         intent.putExtra(ROUND_ID, roundId);
         intent.putExtra(HOLE_ID, holeId);
         intent.putExtra(SHOT_NUMBER, shotNumber);
@@ -177,8 +179,12 @@ public class ActivityShot extends AppCompatActivity implements View.OnClickListe
                 clubHit = "GW";
                 getOutcome();
                 break;
+            case R.id.btnClubLW:
+                clubHit = "LW";
+                getOutcome();
+                break;
             case R.id.btnShotTypeDrive:
-                shotType = "LW";
+                shotType = "Drive";
                 break;
             case R.id.btnShotTypeApproach:
                 shotType = btnShotTypeApproach.getText().toString();

@@ -31,6 +31,7 @@ public class ActivityRound extends AppCompatActivity {
         setContentView(R.layout.activity_round);
         etHolePar = this.findViewById(R.id.editTextHolePar);
         etHoleStroke = this.findViewById(R.id.editTextHoleStroke);
+        roundId = Util.generateGuid();
     }
 
     @Override
@@ -39,13 +40,13 @@ public class ActivityRound extends AppCompatActivity {
         etHolePar.requestFocus();
         etHolePar.setText("");
         etHoleStroke.setText("");
-        roundId = Util.generateGuid();
     }
 
     public void startHole(View view) {
         if (holeNumber < 18) {
             holeNumber++;
             Intent intent = new Intent(this, ActivityHole.class);
+            System.out.println("[ROUND ID -> ActivityHole]: "+roundId);
             intent.putExtra(ROUND_ID, roundId);
             intent.putExtra(HOLE_NUMBER, holeNumber);
 
