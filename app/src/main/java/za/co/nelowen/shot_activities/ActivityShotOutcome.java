@@ -92,31 +92,31 @@ public class ActivityShotOutcome extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnHD:
-                ballFlight = btnHD.getText().toString();
+                ballFlight = "HD";
                 break;
             case R.id.btnH:
-                ballFlight = btnH.getText().toString();
+                ballFlight = "H";
                 break;
             case R.id.btnHF:
-                ballFlight = btnHF.getText().toString();
+                ballFlight = "HF";
                 break;
             case R.id.btnD:
-                ballFlight = btnD.getText().toString();
+                ballFlight = "D";
                 break;
             case R.id.btnS:
-                ballFlight = btnS.getText().toString();
+                ballFlight = "S";
                 break;
             case R.id.btnF:
-                ballFlight = btnF.getText().toString();
+                ballFlight = "F";
                 break;
             case R.id.btnLD:
-                ballFlight = btnLD.getText().toString();
+                ballFlight = "LD";
                 break;
             case R.id.btnL:
-                ballFlight = btnL.getText().toString();
+                ballFlight = "L";
                 break;
             case R.id.btnLF:
-                ballFlight = btnLF.getText().toString();
+                ballFlight = "LF";
                 break;
             case R.id.btnOutcomeFairway:
                 outcome = btnOutcomeFairway.getText().toString();

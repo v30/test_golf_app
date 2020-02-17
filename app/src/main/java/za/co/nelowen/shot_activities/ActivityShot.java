@@ -110,75 +110,75 @@ public class ActivityShot extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnClubDriver:
-                 clubHit = btnClubDriver.getText().toString();
+                 clubHit = "DR";
                 getOutcome();
                 break;
             case R.id.btnClub3W:
-                clubHit = btnClub3W.getText().toString();
+                clubHit = "3W";
                 getOutcome();
                 break;
             case R.id.btnClub5W:
-                clubHit = btnClub5W.getText().toString();
+                clubHit = "5W";
                 getOutcome();
                 break;
             case R.id.btnClub3H:
-                clubHit = btnClub3H.getText().toString();
+                clubHit = "3H";
                 getOutcome();
                 break;
             case R.id.btnClub4H:
-                clubHit = btnClub4H.getText().toString();
+                clubHit = "4H";
                 getOutcome();
                 break;
             case R.id.btnClub5H:
-                clubHit = btnClub5H.getText().toString();
+                clubHit = "5H";
                 getOutcome();
                 break;
             case R.id.btnClub2I:
-                clubHit = btnClub2I.getText().toString();
+                clubHit = "2I";
                 getOutcome();
                 break;
             case R.id.btnClub3I:
-                clubHit = btnClub3I.getText().toString();
+                clubHit = "3I";
                 getOutcome();
                 break;
             case R.id.btnClub4I:
-                clubHit = btnClub4I.getText().toString();
+                clubHit = "4I";
                 getOutcome();
                 break;
             case R.id.btnClub5I:
-                clubHit = btnClub5I.getText().toString();
+                clubHit = "5I";
                 getOutcome();
                 break;
             case R.id.btnClub6I:
-                clubHit = btnClub6I.getText().toString();
+                clubHit = "6I";
                 getOutcome();
                 break;
             case R.id.btnClub7I:
-                clubHit = btnClub7I.getText().toString();
+                clubHit = "7I";
                 getOutcome();
                 break;
             case R.id.btnClub8I:
-                clubHit = btnClub8I.getText().toString();
+                clubHit = "8I";
                 getOutcome();
                 break;
             case R.id.btnClub9I:
-                clubHit = btnClub9I.getText().toString();
+                clubHit = "9I";
                 getOutcome();
                 break;
             case R.id.btnClubPW:
-                clubHit = btnClubPW.getText().toString();
+                clubHit = "PW";
                 getOutcome();
                 break;
             case R.id.btnClubSW:
-                clubHit = btnClubSW.getText().toString();
+                clubHit = "SW";
                 getOutcome();
                 break;
             case R.id.btnClubGW:
-                clubHit = btnClubGW.getText().toString();
+                clubHit = "GW";
                 getOutcome();
                 break;
             case R.id.btnShotTypeDrive:
-                shotType = btnShotTypeDrive.getText().toString();
+                shotType = "LW";
                 break;
             case R.id.btnShotTypeApproach:
                 shotType = btnShotTypeApproach.getText().toString();

@@ -98,7 +98,7 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("CREATE TABLE IF NOT EXISTS ");
         query.append("holes ");
         query.append("(");
-        query.append("hole_id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+        query.append("hole_id VARCHAR(255) PRIMARY KEY, ");
         query.append("round_id INT NOT NULL, ");
         query.append("hole_number INT NOT NULL, ");
         query.append("hole_par INT NOT NULL, ");
@@ -117,7 +117,7 @@ public class DBHelper extends SQLiteOpenHelper {
         query.append("CREATE TABLE IF NOT EXISTS ");
         query.append("shots ");
         query.append("(");
-        query.append("shot_id INTEGER PRIMARY KEY AUTOINCREMENT, ");
+        query.append("shot_id VARCHAR(255) PRIMARY KEY, ");
         query.append("round_id INT NOT NULL, ");
         query.append("hole_id INT NOT NULL, ");
         query.append("shot_number INT NOT NULL, ");
