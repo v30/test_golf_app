@@ -37,4 +37,5 @@ public class JavaConstants {
     public static final String CLUB_HIT = "club_hit";
     public static final String BALL_FLIGHT = "ball_flight";
     public static final String OUTCOME = "outcome";
+    public static final String PUTT = "putt";
 }

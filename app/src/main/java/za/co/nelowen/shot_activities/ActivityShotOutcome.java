@@ -94,61 +94,78 @@ public class ActivityShotOutcome extends AppCompatActivity implements View.OnCli
         switch (v.getId()) {
             case R.id.btnHD:
                 ballFlight = "HD";
+                Util.setActive(btnHD, getResources().getColor(R.color.active));
                 break;
             case R.id.btnH:
                 ballFlight = "H";
+                Util.setActive(btnH, getResources().getColor(R.color.active));
                 break;
             case R.id.btnHF:
                 ballFlight = "HF";
+                Util.setActive(btnHF, getResources().getColor(R.color.active));
                 break;
             case R.id.btnD:
                 ballFlight = "D";
+                Util.setActive(btnD, getResources().getColor(R.color.active));
                 break;
             case R.id.btnS:
                 ballFlight = "S";
+                Util.setActive(btnS, getResources().getColor(R.color.active));
                 break;
             case R.id.btnF:
                 ballFlight = "F";
+                Util.setActive(btnF, getResources().getColor(R.color.active));
                 break;
             case R.id.btnLD:
                 ballFlight = "LD";
+                Util.setActive(btnLD, getResources().getColor(R.color.active));
                 break;
             case R.id.btnL:
                 ballFlight = "L";
+                Util.setActive(btnL, getResources().getColor(R.color.active));
                 break;
             case R.id.btnLF:
                 ballFlight = "LF";
+                Util.setActive(btnLF, getResources().getColor(R.color.active));
                 break;
             case R.id.btnOutcomeFairway:
                 outcome = btnOutcomeFairway.getText().toString();
+                Util.setActive(btnOutcomeFairway, getResources().getColor(R.color.active));
                 endShot();
                 break;
             case R.id.btnOutcomeGreen:
                 outcome = btnOutcomeGreen.getText().toString();
+                Util.setActive(btnOutcomeGreen, getResources().getColor(R.color.active));
                 endShot();
                 break;
             case R.id.btnbtnOutcomeBunker:
                 outcome = btnbtnOutcomeBunker.getText().toString();
+                Util.setActive(btnbtnOutcomeBunker, getResources().getColor(R.color.active));
                 endShot();
                 break;
             case R.id.btnbtnOutcomeHazard:
                 outcome = btnbtnOutcomeHazard.getText().toString();
+                Util.setActive(btnbtnOutcomeHazard, getResources().getColor(R.color.active));
                 endShot();
                 break;
             case R.id.btnbtnOutcomeFringe:
                 outcome = btnbtnOutcomeFringe.getText().toString();
+                Util.setActive(btnbtnOutcomeFringe, getResources().getColor(R.color.active));
                 endShot();
                 break;
             case R.id.btnOutcomeRough:
                 outcome = btnOutcomeRough.getText().toString();
+                Util.setActive(btnOutcomeRough, getResources().getColor(R.color.active));
                 endShot();
                 break;
             case R.id.btnOutcomeHole:
                 outcome = btnOutcomeHole.getText().toString();
+                Util.setActive(btnOutcomeHole, getResources().getColor(R.color.active));
                 endShot();
                 break;
             case R.id.btnOutcomeDuff:
                 outcome = btnOutcomeDuff.getText().toString();
+                Util.setActive(btnOutcomeDuff, getResources().getColor(R.color.active));
                 endShot();
                 break;
         }

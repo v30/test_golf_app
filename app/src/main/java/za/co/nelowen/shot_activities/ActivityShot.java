@@ -6,12 +6,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
 
 import za.co.nelowen.R;
+import za.co.nelowen.helper_classes.Util;
 
 import static za.co.nelowen.helper_classes.JavaConstants.CLUB_HIT;
 import static za.co.nelowen.helper_classes.JavaConstants.HOLE_ID;
+import static za.co.nelowen.helper_classes.JavaConstants.PUTT;
 import static za.co.nelowen.helper_classes.JavaConstants.ROUND_ID;
 import static za.co.nelowen.helper_classes.JavaConstants.SHOT_NUMBER;
 import static za.co.nelowen.helper_classes.JavaConstants.SHOT_TYPE;
@@ -24,7 +27,7 @@ public class ActivityShot extends AppCompatActivity implements View.OnClickListe
     private String clubHit;
     private int shotNumber;
     private Button btnClubDriver, btnClub3W, btnClub5W, btnClub3H, btnClub4H, btnClub5H, btnClub2I, btnClub3I, btnClub4I, btnClub5I, btnClub6I, btnClub7I, btnClub8I, btnClub9I, btnClubPW, btnClubSW, btnClubGW, btnClubLW;
-    private Button btnShotTypeDrive, btnShotTypeApproach, btnShotTypeLayup, btnShotTypePitch, btnShotTypeChip, btnShotTypePutt;
+    private Button btnShotTypeDrive, btnShotTypeApproach, btnShotTypeLayup, btnShotTypePitch, btnShotTypeChip, btnShotTypePutt, btnClubPutter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ public class ActivityShot extends AppCompatActivity implements View.OnClickListe
         btnClubSW = findViewById(R.id.btnClubSW);
         btnClubGW = findViewById(R.id.btnClubGW);
         btnClubLW = findViewById(R.id.btnClubLW);
+        btnClubPutter = findViewById(R.id.btnClubPutter);
         btnShotTypeDrive = findViewById(R.id.btnShotTypeDrive);
         btnShotTypeApproach = findViewById(R.id.btnShotTypeApproach);
         btnShotTypeLayup = findViewById(R.id.btnShotTypeLayup);
@@ -77,6 +81,7 @@ public class ActivityShot extends AppCompatActivity implements View.OnClickListe
         btnClubSW.setOnClickListener(this);
         btnClubGW.setOnClickListener(this);
         btnClubLW.setOnClickListener(this);
+        btnClubPutter.setOnClickListener(this);
         btnShotTypeDrive.setOnClickListener(this);
         btnShotTypeApproach.setOnClickListener(this);
         btnShotTypeLayup.setOnClickListener(this);
@@ -93,7 +98,7 @@ public class ActivityShot extends AppCompatActivity implements View.OnClickListe
         shotNumber = holeIntent.getIntExtra(SHOT_NUMBER, 0);
     }
 
-    public void getOutcome() {
+    public void getOutcome(boolean putt) {
         EditText etTargetDistance = findViewById(R.id.etDistanceToPin);
         int targetDistance = Integer.parseInt(etTargetDistance.getText().toString());
         Intent intent = new Intent(this, ActivityShotOutcome.class);
@@ -104,6 +109,7 @@ public class ActivityShot extends AppCompatActivity implements View.OnClickListe
         intent.putExtra(SHOT_TYPE, shotType);
         intent.putExtra(CLUB_HIT, clubHit);
         intent.putExtra(TARGET_DISTANCE, targetDistance);
+        if (putt) intent.putExtra(PUTT, true);
         startActivity(intent);
         finish();
     }
@@ -112,94 +118,127 @@ public class ActivityShot extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnClubDriver:
-                 clubHit = "DR";
-                getOutcome();
+                clubHit = "DR";
+                getOutcome(false);
+                Util.setActive(btnClubDriver, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub3W:
                 clubHit = "3W";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub3W, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub5W:
                 clubHit = "5W";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub5W, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub3H:
                 clubHit = "3H";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub3H, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub4H:
                 clubHit = "4H";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub4H, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub5H:
                 clubHit = "5H";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub5H, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub2I:
                 clubHit = "2I";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub2I, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub3I:
                 clubHit = "3I";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub3I, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub4I:
                 clubHit = "4I";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub4I, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub5I:
                 clubHit = "5I";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub5I, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub6I:
                 clubHit = "6I";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub6I, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub7I:
                 clubHit = "7I";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub7I, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub8I:
                 clubHit = "8I";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub8I, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClub9I:
                 clubHit = "9I";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClub9I, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClubPW:
                 clubHit = "PW";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClubPW, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClubSW:
                 clubHit = "SW";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClubSW, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClubGW:
                 clubHit = "GW";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClubGW, getResources().getColor(R.color.active));
                 break;
             case R.id.btnClubLW:
                 clubHit = "LW";
-                getOutcome();
+                getOutcome(false);
+                Util.setActive(btnClubLW, getResources().getColor(R.color.active));
+                break;
+            case R.id.btnClubPutter:
+                clubHit = "Putter";
+                getOutcome(true);
+                Util.setActive(btnClubPutter, getResources().getColor(R.color.active));
                 break;
             case R.id.btnShotTypeDrive:
                 shotType = "Drive";
+                Util.setActive(btnShotTypeDrive, getResources().getColor(R.color.active));
                 break;
             case R.id.btnShotTypeApproach:
                 shotType = btnShotTypeApproach.getText().toString();
+                Util.setActive(btnShotTypeApproach, getResources().getColor(R.color.active));
                 break;
             case R.id.btnShotTypeLayup:
                 shotType = btnShotTypeLayup.getText().toString();
+                Util.setActive(btnShotTypeApproach, getResources().getColor(R.color.active));
                 break;
             case R.id.btnShotTypePitch:
                 shotType = btnShotTypePitch.getText().toString();
+                Util.setActive(btnShotTypePitch, getResources().getColor(R.color.active));
                 break;
             case R.id.btnShotTypeChip:
                 shotType = btnShotTypeChip.getText().toString();
+                Util.setActive(btnShotTypeChip, getResources().getColor(R.color.active));
                 break;
             case R.id.btnShotTypePutt:
                 shotType = btnShotTypePutt.getText().toString();
+                Util.setActive(btnShotTypePutt, getResources().getColor(R.color.active));
+                Button[] buttons = new Button[] {btnClubDriver, btnClub3W, btnClub5W, btnClub3H, btnClub4H, btnClub5H, btnClub2I, btnClub3I, btnClub4I, btnClub5I, btnClub6I, btnClub7I, btnClub8I, btnClub9I, btnClubPW, btnClubSW, btnClubGW, btnClubLW};
+                Util.setVisible(buttons, true);
+                buttons = new Button[] {btnClubPutter};
+                Util.setVisible(buttons, false);
                 break;
         }
     }
